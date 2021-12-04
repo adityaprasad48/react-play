@@ -1,12 +1,31 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Home = () => {
-  
-  return (
-    <div>
-      <h1>Home</h1>
-    </div>
-  )
-}
+	const count = useSelector((state) => state.counter.count);
+	const dispatch = useDispatch();
 
-export default Home
+	const handleInc = () => {
+		dispatch({ type: 'INCREMENT' });
+	};
+
+	const handleDec = () => {
+		dispatch({ type: 'DECREMENT' });
+	};
+
+	return (
+		<div>
+			<h1>Home</h1>
+			<h1>Count: {count}</h1>
+			<button className="btn btn-add" onClick={handleInc}>
+				Inc
+			</button>
+			<button className="btn btn-dec" onClick={handleDec}>
+				Dec
+			</button>
+		</div>
+	);
+};
+
+export default Home;
