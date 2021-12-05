@@ -2,6 +2,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import { About } from './About';
 import './App.css';
 import Home from './Home';
+import TodosPage from './TodosPage';
 
 function App() {
 	return (
@@ -10,10 +11,12 @@ function App() {
 			<nav>
 				<Link to="/">Home</Link>
 				<Link to="/about">About</Link>
+				<Link to="/todos">Todos</Link>
 			</nav>
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="about" element={<About />} />
+				<Route path="todos" element={<TodosPage />} />
 			</Routes>
 		</div>
 	);
