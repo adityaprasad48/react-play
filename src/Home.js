@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import MousePosition from './components/MousePosition';
 
 const Home = () => {
-  
-  return (
-    <div>
-      <h1>Home</h1>
-    </div>
-  )
-}
+	return (
+		<div>
+			<h1>Home</h1>
+			<MousePosition />
+		</div>
+	);
+};
 
-export default Home
+export default Home;
