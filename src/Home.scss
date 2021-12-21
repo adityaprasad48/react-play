@@ -1,0 +1,65 @@
+.boxes {
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid green;
+	background-color: rgb(249, 250, 251);
+
+	.box-item {
+		width: 8rem;
+		height: 10rem;
+		background-color: lightblue;
+		margin: 10px;
+		border-radius: 0.8rem;
+		cursor: pointer;
+		// grow, shrink, width 24%
+		flex: 0 1 calc(25%-1rem);
+	}
+
+	.box-item-1 {
+		background-color: rgb(241, 196, 15);
+
+		&:hover {
+			background-color: rgb(240, 128, 128);
+		}
+	}
+
+	.box-item-2 {
+		background-color: rgb(251, 198, 22);
+	}
+
+	.box-item-3 {
+		background-color: rgb(204, 204, 255);
+	}
+	.box-item-4 {
+		background-color: lightseagreen;
+	}
+	.box-item-5 {
+		background-color: lightpink;
+	}
+	.box-item-6 {
+		background-color: lightcyan;
+	}
+	.box-item-7 {
+		background-color: lightsalmon;
+	}
+	.box-item-8 {
+		background-color: lightgoldenrodyellow;
+	}
+
+	.box-item-8 {
+		background-color: lightslategrey;
+	}
+
+	.box-item-8 {
+		background-color: greenyellow;
+	}
+}
+
+// small screen
+@media (min-width: 640px) {
+	.boxes {
+		padding-top: 3rem /* 48px */;
+		padding-bottom: 3rem /* 48px */;
+		border: 2px solid red;
+	}
+}
