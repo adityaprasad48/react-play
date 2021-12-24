@@ -1,0 +1,49 @@
+.row {
+	clear: both;
+}
+
+.country {
+	float: left;
+	width: 250px;
+}
+
+.country form {
+	float: left;
+}
+
+.country .country-input {
+	width: 100px;
+}
+
+.average {
+	float: left;
+	width: 250px;
+}
+
+.horiz-bar {
+	display: inline-block;
+	background-color: blue;
+	border-style: solid;
+	border-color: black;
+}
+
+@media screen and (min-width: 900px) {
+	.country,
+	.average {
+		width: 300px;
+	}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+	.country,
+	.average {
+		width: 200px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.country,
+	.average {
+		width: 300px;
+	}
+}
