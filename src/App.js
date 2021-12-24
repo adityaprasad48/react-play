@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import { About } from './About';
 import './App.css';
+import ArrayMethods from './ArrayMethods';
 import Home from './Home';
 import NewTag from './NewTag';
 
@@ -9,7 +10,7 @@ function App() {
 	//* The padStart() method pads the current string with another string (multiple times, if needed) until the resulting string reaches the given length.
 
 	const str1 = '5';
-	console.log(str1.padStart(2, '0'));
+	console.log(str1.padStart(4, '0'));
 
 	let log = console.log;
 
@@ -18,42 +19,20 @@ function App() {
 
 	//* The next() method returns an object with two properties done and value. You can also provide a parameter to the next method to send a value to the generator.
 
-	function* gen() {
-		yield 1;
-		yield 2;
+	function* genrateArg() {
+		yield 'one';
+		yield 'two';
 		yield new Date();
 	}
 
-	const g = gen(); // "Generator { }"
-	log(g.next()); // "Object { value: 1, done: false }"
-	log(g.next()); // "Object { value: 2, done: false }"
-	log(g.next()); // "Object { value: 3, done: false }"
-	log(g.next());
+	const genArg = genrateArg();
+	// while (genArg.next().done) {
+	// 	console.log(genArg.next());
+	// }
 
-	// next() with a list
-	function* getPage(len, myList) {
-		let _len = 0;
-
-		while (true) {
-			let _myList = myList.slice(0, _len);
-			_len = _len + 3;
-			yield _myList;
-		}
+	for (let item of genArg) {
+		console.log('item', item);
 	}
-
-	const list = [1, 2, 3, 4, 5, 6, 7, 8];
-	var page = getPage(3, list);
-
-	let aLen = 0;
-	while (aLen < 3) {
-		log(`pageGenrator ${aLen}`, page.next());
-		aLen = aLen + 1;
-	}
-
-	// log('ll0', page.next());
-	// log('ll1', page.next());
-	// log('ll2', page.next());
-	// log('ll2', page.next());
 
 	// Sending Values to genrators
 	function* sendGen() {
@@ -64,24 +43,23 @@ function App() {
 	}
 
 	const sg = sendGen();
-	g.next(1);
+	sg.next(1);
 	// "{ value: null, done: false }"
-	g.next(2);
+	sg.next(2);
 	// 2
 
 	//* The return() method returns the given value and finishes the generator.
 
-	// function* gen() {
-	// 	yield 1;
-	// 	yield 2;
-	// 	yield 3;
-	// }
+	function* gen() {
+		yield 1;
+		yield 2;
+		yield 3;
+	}
 
-	// const g = gen();
+	const g = gen();
 
-	// g.next(); // { value: 1, done: false }
-	// g.return('foo'); // { value: "foo", done: true }
-	// g.next();
+	console.log('g.next()', g.next());
+	console.log("g.return('exited')", g.return('exited'));
 
 	//* The throw() method resumes the execution of a generator by throwing an error into it and returns an object with two properties done and value.
 
@@ -139,7 +117,7 @@ function App() {
 	// expected output: Array [1, 2, 3]
 
 	// TypeError:-
-	// 1. when you are trying todo thing which related to type like calling string variable as it is method.
+	// 1. when you are trying do thing which related to type like calling string variable as it is method.
 
 	// tagged functions
 	function myTag(strings, personExp, ageExp) {
@@ -222,7 +200,7 @@ function App() {
 
 	console.log('isObjFrozen', Object.isFrozen(obj));
 
-	// Set, Map, Proxy,
+	// Map, Proxy,
 
 	// Map is a collection of keyed data items, just like an Object. But the main difference is that Map allows keys of any type.
 
@@ -277,84 +255,7 @@ function App() {
 
 	console.log('fruitObj', fruitObj);
 
-	// Set:--
-	// A Set is a special type collection – “set of values” (without keys), where each value may occur only once.
 
-	let set = new Set();
-
-	let john = { name: 'John' };
-	let pete = { name: 'Pete' };
-	let mary = { name: 'Mary' };
-
-	// visits, some users come multiple times
-	set.add(john);
-	set.add(pete);
-	set.add(mary);
-	set.add(john);
-	set.add(mary);
-	set.add('Aditya');
-
-	console.log('set', set);
-
-	for (let value of set) console.log(value);
-
-	// the same with forEach:
-	// set.forEach((value, valueAgain, set) => {
-	// 	alert(value);
-	// });
-
-	console.log('set.entries', [...set.entries()]);
-	console.log('set.keys', [...set.keys()]);
-	console.log('set.values', [...set.values()]);
-
-	// Flataning Arrary
-
-	const arr2 = [1, 2, [3, 4, [5, 6]]];
-	arr2.flat();
-	// [1, 2, 3, 4, [5, 6]]
-
-	const arr3 = [1, 2, [3, 4, [5, 6]]];
-	arr3.flat(2);
-	// [1, 2, 3, 4, 5, 6]
-
-	const arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
-	arr4.flat(Infinity);
-
-	const arr5 = [1, 2, , 4, 5];
-	arr5.flat();
-	// [1, 2, 4, 5]
-
-	// Object.assign()
-	// The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the modified target object
-
-	const returnedTarget = Object.assign({ a: 1 }, { name: 'adi' });
-
-	// cloning an object
-	const originalObj = { a: 1 };
-	const copy = Object.assign({}, originalObj);
-	console.log(copy); // { a: 1 }
-
-	// Merging Objects
-	const o1 = { a: 1 };
-	const o2 = { b: 2 };
-	const o3 = { c: 3 };
-
-	const objMerege = Object.assign(o1, o2, o3);
-
-	// Merging with same properties
-	const o4 = {
-		a: 1,
-		b: 1,
-		c: 1,
-		d: {
-			name: {
-				first_name: 'adi',
-				last_name: 'prasad',
-			},
-		},
-	};
-	const o5 = { b: 2, c: 2 };
-	const o6 = { c: 3 };
 
 	// Proxy
 
@@ -468,33 +369,7 @@ function App() {
 	// p3 & p4
 	Promise.all([p3, p4]).then((res) => console.log('res p3 & p4', res)); // does not return if any of promise rejects
 
-	// WeakSet
-	// WeakSet objects are collections of objects.
 
-	// WeakSets are collections of objects only. They cannot contain arbitrary values of any type, as Sets can.
-	// The WeakSet is weak, meaning references to objects in a WeakSet are held weakly. If no other references to an object stored in the WeakSet exist, those objects can be garbage collected.
-
-	const weakSet = new WeakSet(); // after task complete they garbage collected.
-
-	// add(), delete(), has()
-
-	weakSet.add({ a: 1 });
-	let a = { a: 1 };
-	let b = { b: 1 };
-	weakSet.add(a);
-	weakSet.add(b);
-
-	console.log('weakSet.has(a)', weakSet.has(a));
-	console.log('weakSet.has(b)', weakSet.has(b));
-
-	console.log('weakSet.has(c)', weakSet.has({}));
-
-	const weakObj = weakSet;
-
-	console.log('weakSet', weakSet);
-	console.log('weakObj', weakObj);
-
-	// WeakMap
 	// The WeakMap object is a collection of key/value pairs in which the keys are weakly referenced. The keys must be objects and the values can be arbitrary values.
 
 	// Keys of WeakMaps are of the type Object only. Primitive data types as keys are not allowed (e.g. a Symbol can't be a WeakMap key)
@@ -532,11 +407,13 @@ function App() {
 				<Link to="/">Home</Link>
 				<Link to="/about">About</Link>
 				<Link to="/new_tag">NewTag</Link>
+				<Link to="/array_methods">Array Methods</Link>
 			</nav>
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="about" element={<About />} />
 				<Route path="new_tag" element={<NewTag />} />
+				<Route path="array_methods" element={<ArrayMethods />} />
 			</Routes>
 		</div>
 	);
