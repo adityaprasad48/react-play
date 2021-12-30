@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import withCounter from './hoc/withCounter';
-import Mouse from './render_props/Mouse';
 
 const About = (props) => {
 	// console.log({ props });
+	const [name, setName] = useState('');
 
 	let x = 0;
 	++x;
@@ -13,17 +13,22 @@ const About = (props) => {
 	let z = x + ++y;
 	console.log({ x, y, z });
 
+	useEffect(() => {
+		// console.log('About Page');
+		// console.log('name', name);
+		// setName(name => 'aditya');
+	});
+
 	return (
-		<Mouse>
-				<div>
-					<h1>About</h1>
-					<h1>Count: {props.count}</h1>
-					<button type="button" onClick={props.increment}>
-						Inc
-					</button>
-				</div>
-			
-		</Mouse>
+		// <Mouse>
+		<div>
+			<h1>About</h1>
+			<h1>Count: {props.count}</h1>
+			<button type="button" onClick={props.increment}>
+				Inc
+			</button>
+		</div>
+		// </Mouse>
 	);
 };
 

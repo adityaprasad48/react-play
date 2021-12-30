@@ -19,6 +19,8 @@ const withMouse = (Component) => (props) => {
 			window.removeEventListener('mousemove', handleMouseCords);
 		};
 	}, []);
+
+	
 	return (
 		<div>
 			<Component mouseCords={cords} />
