@@ -1,25 +1,3 @@
-const user = {
-	name: {
-		firstName: 'Adity',
-	},
-	address: {
-		street: '92',
-		area: 'Kali badi',
-	},
-};
-
-// const updateUser = {
-//   ...user,
-//   {
-//     ...user.name,
-//     firstName: 'Archita'
-//   }
-// }
-
-const updateUser = {
-	...JSON.parse(JSON.stringify(user)),
-};
-
 // 'aditya prasad'.split(' ').map (item => item.charAt(0).toUpperCase() + item.slice(1)).join(' ')
 
 // 3 +”3”
